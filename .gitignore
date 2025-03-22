@@ -1,0 +1,67 @@
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.code-workspace
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.temp
+*.pid
+*.seed
+*.pid.lock
+
+# Ignore compiled files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
+*.idb
+*.lib
+*.ndb
+*.obj
+*.tlog
+*.vspscc
+*.vssscc
+
+# Ignore NuGet packages
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore EF Core migrations
+Migrations/
+
+# Ignore configuration files
+appsettings*.json
+
+# Ignore test results
+TestResults/
+*.trx
+*.coverage
+
+# Ignore SQL files
+sql/
+
+# Ignore wwwroot static files
+wwwroot/
+
+# Ignore Rider IDE files
+.idea/
+*.sln.iml
+
+# Ignore other system files
+.DS_Store
+Thumbs.db
