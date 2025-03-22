@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Serverless2@25"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+  webapi:
+    image: mcr.microsoft.com/dotnet/sdk:9.0
+    working_dir: /workspace
+    command: bash -c "dotnet restore ./WebApi && dotnet watch run --project ./WebApi --urls=http://0.0.0.0:5012"
+    ports:
+      - "5012:5012"
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=YourDatabase;User Id=sa;Password=Serverless2@25;TrustServerCertificate=True;"
+      ASPNETCORE_ENVIRONMENT: "Development"
+    volumes:
+      - ..:/workspace
+    depends_on:
+      - sqlserver
+
+volumes:
+  sqlserver-data:
