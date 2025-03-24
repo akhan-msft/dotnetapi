@@ -45,7 +45,7 @@ artifacts/
 Migrations/
 
 # Ignore configuration files
-appsettings*.json
+##appsettings*.json
 
 # Ignore test results
 TestResults/
@@ -53,10 +53,10 @@ TestResults/
 *.coverage
 
 # Ignore SQL files
-sql/
+#sql/
 
 # Ignore wwwroot static files
-wwwroot/
+#wwwroot/
 
 # Ignore Rider IDE files
 .idea/
