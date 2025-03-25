@@ -16,17 +16,11 @@
 - Implement proper async error handling
 
 ## Testing
-- Generate unit tests using xUnit (or NUnit/MSTest) with proper Arrange-Act-Assert pattern
+- Generate unit tests using NUnit with proper Arrange-Act-Assert pattern
 - Use Moq for mocking dependencies in tests
 - Use an in-memory database for database related unit tests
-- Ensure test coverage for edge cases and error paths
-- Follow naming convention [MethodName]_[Scenario]_[ExpectedResult] for test methods
 - Write tests that validate one behavior at a time with clear assertions
 - Use test data builders or factory methods for complex test arrangements
-- Implement integration tests for database and API operations
-- Consider using FluentAssertions for more readable assertions
-- Create test fixtures for shared test context and dependencies
-- Use theory tests with InlineData for testing multiple scenarios
 
 ## Configuration & Logging
 - Use IOptions pattern for configuration management

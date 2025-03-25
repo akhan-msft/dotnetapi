@@ -5,34 +5,31 @@ using System.Threading.Tasks;
 
 public class CustomerService : ICustomerService
 {
-    private readonly AppDbContext _context;
+    private readonly ICustomerRepository _customerRepository;
 
-    public CustomerService(AppDbContext context)
+    public CustomerService(ICustomerRepository customerRepository)
     {
-        _context = context;
+        _customerRepository = customerRepository;
     }
 
     public async Task<List<Customer>> GetAllCustomersAsync()
     {
-        return await _context.Customers.ToListAsync();
+        return await _customerRepository.GetAllAsync();
     }
 
     public async Task<Customer?> GetCustomerByIdAsync(int id)
     {
-        return await _context.Customers.FindAsync(id);
+        return await _customerRepository.GetByIdAsync(id);
     }
 
     public async Task<Customer> CreateCustomerAsync(Customer customer)
     {
-        _context.Customers.Add(customer);
-        await _context.SaveChangesAsync();
+        await _customerRepository.AddAsync(customer);
         return customer;
     }
 
     public async Task<List<Customer?>> SearchCustomersByNameAsync(string name)
     {
-        return await _context.Customers
-            .Where(c => EF.Functions.Like(c.CustomerName, $"%{name}%"))
-            .ToListAsync();
+        return await _customerRepository.SearchByNameAsync(name);
     }
 }
