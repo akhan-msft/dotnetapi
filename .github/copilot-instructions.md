@@ -12,15 +12,7 @@
 
 ## Async Programming
 - Prefer async/await patterns when dealing with I/O operations
-- Use CancellationToken parameters for cancellable operations
 - Implement proper async error handling
-
-## Testing
-- Generate unit tests using NUnit with proper Arrange-Act-Assert pattern
-- Use Moq for mocking dependencies in tests
-- Use an in-memory database for database related unit tests
-- Write tests that validate one behavior at a time with clear assertions
-- Use test data builders or factory methods for complex test arrangements
 
 ## Configuration & Logging
 - Use IOptions pattern for configuration management
@@ -28,7 +20,6 @@
 - Use structured logging for better searchability
 
 ## Data & Validation
-- Implement proper validation using FluentValidation or DataAnnotations
 - Use Entity Framework Core best practices including DbContext design and migration patterns
 - Implement repository pattern for data access when appropriate
 
@@ -39,5 +30,4 @@
 
 ## Security
 - Follow OWASP guidelines for secure coding
-- Implement proper authentication and authorization
 - Use secure connection strings and credential management 
