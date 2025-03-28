@@ -46,11 +46,11 @@ Can you update the customer form so it uses a vertical layout and reduces white 
 
 ### Create Customers web page using a page mockup created in webflow
 ```
-can you generate an HTML page using the mockup image i've included, the page should allow searching by Customer ID and return the Order Details for the customer in a table as shown in the mock up. Order and mock up page
+Can you generate an html page for me using the mockup page in the png file I attached
 ```
 
 ```
-Can you generate an html page for me using the mockup page in the png file I attached
+can you update the page so it uses the customer API to save customer and also integrate the search by name for the top search form? please use jquery for invoking the API and use the correct properties for the customer class, if a customer is found, the page and the form fields should be updated accordingly
 ```
 
 ### Use Prompt to generate an OpenAI controller
@@ -76,6 +76,11 @@ Can you generate an html page for me using the mockup page in the png file I att
 ```
 
 ### Create web page using hand drawn mockup 
+```
+```
+can you generate an HTML page using the mockup image i've included, the page should allow searching by Customer ID and return the Order Details for the customer in a table as shown in the mock up. Order and mock up page
+```
+
 ```
 Using the following GET and POST requests samples, can you generate an html web page for me using the Orders search mockup image I've attached to search for Orders by Customer ID and display Orders in an html table, you can use jquery for the API calls, you can use Bootstrap CSS for styling
 
