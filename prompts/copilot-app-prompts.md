@@ -6,6 +6,10 @@
 Can you evaluate this Web Controller and suggest changes to improve the design of this code so it adheres to our standards and overall best practices for .NET API development? For example, consider using the following patterns Repository Pattern** for data access Business Service/Delegate Pattern
 ```
 
+```
+can you help me with a curl request sample to test the order API from a poweshell terminal
+```
+
 ### Unit Test Generation
 
 ```txt

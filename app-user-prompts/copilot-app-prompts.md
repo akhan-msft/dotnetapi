@@ -7,7 +7,7 @@ can you please recommend the changes that are required to expose this new stored
 
 ### Unit tests for new customer service
 ```
-can you please help me write some unit tests for this Service, please ensure that the references to the Customer entity has the correct properties within the unit tests
+can you please help write unit tests for this service class, please ensure that you are using the correct customer model properties inside the unit tests, use mocks for database access
 ```
 
 ### prompt for refactoring of Order controller
