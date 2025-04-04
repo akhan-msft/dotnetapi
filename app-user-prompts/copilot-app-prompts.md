@@ -52,6 +52,12 @@ Can you generate an html page for me using the mockup page in the png file I att
 can you update the page so it uses the customer API to save customer and also integrate the search by name for the top search form? please use jquery for invoking the API and use the correct properties for the customer class, if a customer is found, the page and the form fields should be updated accordingly
 ```
 
+```
+Can you generate an html page for me using the mockup page I attached? the page has a search form that allows searching a customer by name and then populates the form below with the customer values if the customer is found
+
+Please integrate with the Customer Controller API to search for and or create new customers. Please use jquery for invoking the API and use the correct properties and fields for the Customer, use bootstrap to enhance and present a modern look to the page.
+```
+
 ### Use Prompt to generate an OpenAI controller
 ```
 // Develop a simple .NET Core Web API Controller that integrates with OpenAI API, using the sample curl request below to develop the integration
@@ -80,9 +86,9 @@ can you generate an HTML page using the mockup image i've included, the page sho
 ```
 
 ```
-Using the following GET and POST requests samples, can you generate an html web page for me using the Orders search mockup image I've attached to search for Orders by Customer ID and display Orders in an html table, you can use jquery for the API calls, you can use Bootstrap CSS for styling
+Using the following GET request sample, can you generate an html web page for me using the Orders search mockup image I've attached to search for Orders by Customer ID and display Orders in an html table, you can use jquery for the API calls and Bootstrap theme for a modern look
 
-GET Request
+GET Request  /api/order/customer/101
 {
   "orderId": 1,
   "customerId": 101,
@@ -90,12 +96,7 @@ GET Request
   "orderDate": "2025-03-26T10:00:00",
   "amount": 1500.00,
 }
-
-POST Request
-{
-  "customerId": 101,
-  "orderDetails": "2x Laptop, 1x Mouse",
-  "orderDate": "2025-03-26T10:00:00",
-  "amount": 1500.00
-}
+```
+```Agent mode
+can you create a .net 8 web API project for me that implements a REST API for products, use an in memory data store for the data and enable swagger support to test the APIs, create the project and build it and resolve any errors that occur during the setup
 ```
