@@ -100,3 +100,11 @@ GET Request  /api/order/customer/101
 ```Agent mode
 can you create a .net 8 web API project for me that implements a REST API for products, use an in memory data store for the data and enable swagger support to test the APIs, create the project and build it and resolve any errors that occur during the setup
 ```
+
+```Agent mode tests
+I would like to add unit tests for my Customer web controller in the /tests/tests.webapi project, can you help write these unit tests and compile and run these tests to ensure they are working, use mock objects wherever possible and again please create the files in the test project folder only
+```
+
+```
+I would like to create a new SPA app using React JS that consumes the Customer API, the UI should follow the look in the index.html page for the Customer view and add functionality, please use a new project directory within this workspace to create the SPA front end project, ensure the app compiles and starts up correctly
+```
