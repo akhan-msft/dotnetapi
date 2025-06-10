@@ -1,6 +1,6 @@
 ## Testing
 - Generate unit tests using NUnit with proper Arrange-Act-Assert pattern
-- Ensure you ae using the correct Assert API
+- Please generate NUnit tests using the constraint-based Assert.That syntax (e.g., Assert.That(actual, Is.EqualTo(expected))) and ensure compatibility with NUnit 3.x
 - Use Moq for mocking dependencies in tests
 - Use an in-memory database for database related unit tests
 - Write tests that validate one behavior at a time with clear assertions
