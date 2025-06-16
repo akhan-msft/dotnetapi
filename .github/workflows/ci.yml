@@ -64,7 +64,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/dotnetapi:${{ github.sha }} -f ./webapi/Dockerfile ./webapi
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/dotnetapi:${{ github.sha }} -f ./webapi/Dockerfile .
       - name: Install Trivy and scan Docker image
         uses: aquasecurity/trivy-action@master
         with:
