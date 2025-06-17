@@ -100,41 +100,34 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Log in to Docker Hub
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v3
+      - name: Set up Docker tags
+        id: docker_tags
+        run: |
+          DATE_TAG=$(date +"%Y__%m__%d:%H:%M:%S")
+          BUILD_ID=${{ github.run_id }}
+          IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/dotnetapi"
+          echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
+          echo "BUILD_TAG=$BUILD_ID" >> $GITHUB_ENV
+          echo "DATE_TAG=$DATE_TAG" >> $GITHUB_ENV
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # Generate Docker image name with GitHub username as fallback
-      - name: Set Docker image name
+      - name: Build Docker image
         run: |
-          if [ -n "${{ secrets.DOCKERHUB_USERNAME }}" ] && [ -n "${{ secrets.DOCKERHUB_REPO }}" ]; then
-            echo "DOCKER_IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO }}" >> $GITHUB_ENV
-          else
-            echo "DOCKER_IMAGE=${{ github.repository_owner }}/${{ env.DOCKER_IMAGE_NAME }}" >> $GITHUB_ENV
-          fi
+          docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:${BUILD_TAG} -t $IMAGE_NAME:${DATE_TAG} .
 
-      # Build image without pushing for PR
-      - name: Build Docker image (PR)
-        if: github.event_name == 'pull_request'
-        uses: docker/build-push-action@v5
-        with:
-          context: ./webapi
-          file: ./webapi/Dockerfile
-          push: false
-          tags: ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
-          
-      # Build and push for main branch
-      - name: Build and push Docker image
-        if: github.event_name != 'pull_request'
-        uses: docker/build-push-action@v5
-        with:
-          context: ./webapi
-          file: ./webapi/Dockerfile
-          push: true
-          tags: ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_IMAGE_TAG }}
+      - name: Push Docker image (latest)
+        run: docker push $IMAGE_NAME:latest
+
+      - name: Push Docker image (build tag)
+        run: docker push $IMAGE_NAME:${BUILD_TAG}
+
+      - name: Push Docker image (date tag)
+        run: docker push $IMAGE_NAME:${DATE_TAG}
 
       # Run Trivy scan on the image
       - name: Run Trivy vulnerability scanner
