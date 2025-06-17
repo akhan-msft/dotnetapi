@@ -116,7 +116,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:${BUILD_TAG} .
+          docker build -f webapi/Dockerfile -t $IMAGE_NAME:latest -t $IMAGE_NAME:${BUILD_TAG} webapi
 
       - name: Push Docker image (latest)
         run: docker push $IMAGE_NAME:latest
