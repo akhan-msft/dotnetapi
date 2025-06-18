@@ -1,0 +1,61 @@
+# This workflow builds the .NET API and runs CodeQL static analysis
+# Follows best practices for .NET and GitHub Actions
+
+name: Build and CodeQL Analysis
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  build:
+    name: Build API
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ./webapi/webapi.csproj
+
+      - name: Build
+        run: dotnet build ./webapi/webapi.csproj --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test ./tests/tests.webapi/tests.webapi.csproj --no-restore --verbosity normal
+
+  codeql:
+    name: CodeQL Analysis
+    runs-on: windows-latest
+    needs: build
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: csharp
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:csharp'
